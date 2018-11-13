@@ -15,9 +15,11 @@ Download link:
 ### Training and Testing
 
 Training files:
+
  -2,3,4,5,6,7,8,9,10,11,12,13,14,15
 
 Testing files:
+
  -1,16,17,18,19,20
 
 ### Annotations
@@ -32,9 +34,11 @@ We take an example with the folder "1":
 
 ## Citation
 
+```
 @article{liu2018roadnet,
 title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images},
 author={Yahui, Liu and Jian, Yao and Xiaohu, Lu and Menghan, Xia and Xingbo, Wang and Yuan, Liu},
 journal={IEEE Transactions on Geoscience and Remote Sensing},
 year={2018},
 }
+```
