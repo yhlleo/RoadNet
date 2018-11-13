@@ -1,5 +1,9 @@
 ## Dataset
 
+![dataset](./roadnet-dataset.jpg)
+
+---------
+
 We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel.
 
 ### Download
