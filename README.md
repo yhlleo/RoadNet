@@ -2,7 +2,7 @@
 
 
 
-Benchmakr Dataset for paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8506600).
+Benchmakr Dataset for paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8506600), TGRS 2018.
 
 ![dataset](./roadnet-dataset.jpg)
 
@@ -42,6 +42,8 @@ We take an example with the folder "1":
 
 ## Citation
 
+Please cite this paper if you use this dataset:
+
 ```
 @article{liu2018roadnet,
 title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images},
@@ -50,3 +52,5 @@ journal={IEEE Transactions on Geoscience and Remote Sensing},
 year={2018},
 }
 ```
+
+You are also welcomed to Email me: yahui.cvrs@gmail.com
