@@ -2,7 +2,7 @@
 
 
 
-Benchmakr Dataset for paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8506600), TGRS 2018.
+Benchmakr Dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8506600), TGRS 2018.
 
 ![dataset](./roadnet-dataset.jpg)
 
@@ -10,14 +10,14 @@ Benchmakr Dataset for paper: [RoadNet: Learning to Comprehensively Analyze Road 
 
 We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel.
 
-### Download
+### 1.Download
 
 Download link: 
 
  - [BaiduYun](https://pan.baidu.com/s/1l9RZvyYfLgTOx_k4LQRyhQ)（Password: h2zt）
  - [GoogleDrive](https://drive.google.com/open?id=1GDHy7uwgOswuCDC49OamlNkAxjaITPBI)
 
-### Training and Testing
+### 2.Training and Testing
 
 Training files:
 
@@ -27,7 +27,7 @@ Testing files:
 
  - 1,16,17,18,19,20
 
-### Annotations
+### 3.Annotations
 
 We take an example with the folder "1": 
 
@@ -40,7 +40,7 @@ We take an example with the folder "1":
 |`extra.png`|roughly mark the heterogeneous regions with a single pixel width brush (red)|
 |`extra-Ottawa-1.tif`| the `Ottawa-1.tif` is overlaid with the `extra.png`|
 
-## Citation
+## 4.Citation
 
 Please cite this paper if you use this dataset:
 
