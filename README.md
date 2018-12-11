@@ -40,7 +40,7 @@ We take an example with the folder "1":
 |`extra.png`|roughly mark the heterogeneous regions with a single pixel width brush (red)|
 |`extra-Ottawa-1.tif`| the `Ottawa-1.tif` is overlaid with the `extra.png`|
 
-## 4.Citation
+### 4.Citation
 
 Please cite this paper if you use this dataset:
 
