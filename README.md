@@ -15,6 +15,7 @@ We collected several typical urban areas of Ottawa, Canada from [Google Earth](h
 Download link: 
 
  - [BaiduYun](https://pan.baidu.com/s/1l9RZvyYfLgTOx_k4LQRyhQ)（Password: h2zt）
+ - [GoogleDrive](https://drive.google.com/open?id=1GDHy7uwgOswuCDC49OamlNkAxjaITPBI)
 
 ### Training and Testing
 
