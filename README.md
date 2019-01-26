@@ -8,7 +8,7 @@ Benchmakr Dataset for the paper: [RoadNet: Learning to Comprehensively Analyze R
 
 ---------
 
-We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel.
+We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel (zoom level 19).
 
 ### 1.Download
 
