@@ -53,4 +53,4 @@ year={2018},
 }
 ```
 
-You are also welcomed to Email me: yahui.cvrs@gmail.com
+You are also welcomed to contact me: yahui.cvrs@gmail.com
