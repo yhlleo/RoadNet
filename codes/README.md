@@ -1,2 +1,2 @@
- - Based on a tensorflow package [tensorpack](https://github.com/tensorpack/tensorpack)
+ - Based on a tensorflow package [tensorpack](https://github.com/tensorpack/tensorpack).
  - Release soon...
