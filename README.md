@@ -50,6 +50,7 @@ title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urb
 author={Yahui, Liu and Jian, Yao and Xiaohu, Lu and Menghan, Xia and Xingbo, Wang and Yuan, Liu},
 journal={IEEE Transactions on Geoscience and Remote Sensing},
 year={2018},
+doi={10.1109/TGRS.2018.2870871}
 }
 ```
 
