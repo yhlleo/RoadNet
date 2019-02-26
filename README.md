@@ -46,11 +46,11 @@ Please cite this paper if you use this dataset:
 
 ```
 @article{liu2018roadnet,
-title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images},
-author={Yahui, Liu and Jian, Yao and Xiaohu, Lu and Menghan, Xia and Xingbo, Wang and Yuan, Liu},
-journal={IEEE Transactions on Geoscience and Remote Sensing},
-year={2018},
-doi={10.1109/TGRS.2018.2870871}
+  title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images},
+  author={Yahui, Liu and Jian, Yao and Xiaohu, Lu and Menghan, Xia and Xingbo, Wang and Yuan, Liu},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
+  year={2018},
+  doi={10.1109/TGRS.2018.2870871}
 }
 ```
 
