@@ -6,7 +6,21 @@ Code for [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex 
 
 ---------
 
-## Dataset
+## 1.Dataset
 
-## Training/Test
+[More Details >>>](../README.md)
 
+## 2.Training/Test
+
+
+ - Training
+
+```
+sh ./experiments/train_roadnet.sh
+```
+
+ - Test 
+
+```
+sh ./experiments/test_roadnet.sh
+```
