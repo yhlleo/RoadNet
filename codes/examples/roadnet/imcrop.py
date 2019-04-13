@@ -24,7 +24,6 @@ def imageCrop(im_file, save_path):
   assert os.path.isdir(save_path)
   im = cv2.imread(im_file, IMG_READ_MODE)
   s = im.shape
-  print(s)
   new_h, new_w, offset_h, offset_w = cropmode(s)
   fp = open(os.path.join(save_path, 'info'), 'w')
   fp.write(str(new_h)+' '+str(new_w)+' '+str(offset_h)+' '+str(offset_w))

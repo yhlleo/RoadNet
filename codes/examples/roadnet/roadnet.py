@@ -19,12 +19,14 @@ from tensorpack import *
 from tensorpack.tfutils.symbolic_functions import *
 from tensorpack.tfutils.summary import *
 
+SHAPE=512
+
 class Model(ModelDesc):
     def _get_inputs(self):
-        return [InputDesc(tf.float32, [None, None, None, 3], 'image'),
-                InputDesc(tf.int32, [None, None, None], 'segment'),
-                InputDesc(tf.int32, [None, None, None], 'boundary'),
-                InputDesc(tf.int32, [None, None, None], 'skeleton')]
+        return [InputDesc(tf.float32, [None, SHAPE, SHAPE, 3], 'image'),
+                InputDesc(tf.int32, [None, SHAPE, SHAPE], 'segment'),
+                InputDesc(tf.int32, [None, SHAPE, SHAPE], 'boundary'),
+                InputDesc(tf.int32, [None, SHAPE, SHAPE], 'skeleton')]
 
     def _build_graph(self, inputs):
         image, segment, boundary, skeleton = inputs
@@ -46,7 +48,7 @@ class Model(ModelDesc):
                 return l
 
         def network1(name, l, extra=True):
-            with argscope(Conv2D, kernel_shape=3, nl=SeLU):
+            with argscope(Conv2D, kernel_shape=3, nl=BNSeLU):
                 with tf.variable_scope(name):
                     l = Conv2D('conv1_1', l, 64)
                     l = Conv2D('conv1_2', l, 64)
@@ -77,7 +79,7 @@ class Model(ModelDesc):
                     return [b1, b2, b3, b4, b5]
 
         def network2(name, l):
-            with argscope(Conv2D, kernel_shape=3, nl=SeLU):
+            with argscope(Conv2D, kernel_shape=3, nl=BNSeLU):
                 with tf.variable_scope(name):
                     l = Conv2D('conv1_1', l, 32)
                     l = Conv2D('conv1_2', l, 32)
@@ -99,12 +101,12 @@ class Model(ModelDesc):
                     b4 = branch('branch4', l, 1, 8)
                     return [b1, b2, b3, b4]
 
-        def BSSloss(name, pred_list, gt, extra=True):
+        def BSSloss(name, pred_list, gt, extra=True, weights=[0.5, 0.75, 1.0, 0.75, 0.5, 1.0]):
             costs = []
             for idx, b in enumerate(pred_list):
                 output = tf.nn.sigmoid(b, name='{}-output{}'.format(name,idx + 1))
                 xentropy = class_balanced_sigmoid_cross_entropy(
-                    b, gt, name='{}-xentropy{}'.format(name,idx + 1))
+                    b, gt, name='{}-xentropy{}'.format(name,idx + 1)) * weights[idx]
                 costs.append(xentropy)
             if extra:
                 costs.append(
@@ -128,7 +130,7 @@ class Model(ModelDesc):
                             W_init=tf.constant_initializer(0.25),
                             use_bias=False, nl=tf.identity))
         boundary_costs = BSSloss('boundary', 
-            boundary_map, boundary)
+            boundary_map, boundary, weights=[0.5, 0.75, 1.0, 0.75, 1.0])
 
         skeleton_map = network2('skeleton', merge_data)
         skeleton_map.append(Conv2D('skeleton-fuse',
@@ -136,7 +138,7 @@ class Model(ModelDesc):
                             W_init=tf.constant_initializer(0.25),
                             use_bias=False, nl=tf.identity))
         skeleton_costs = BSSloss('skeleton', 
-            skeleton_map, skeleton)
+            skeleton_map, skeleton, weights=[0.5, 0.75, 1.0, 0.75, 1.0])
 
 
         if get_current_tower_context().is_training:
@@ -175,7 +177,7 @@ def get_data(name):
     isTrain = name == 'train'
     ds = dataset.RoadNetImage(name, 
         '../../datasets/Ottawa/train', shuffle=True)
-    print ds.size()
+    
     class CropMultiple16(imgaug.ImageAugmentor):
         def _get_augment_params(self, img):
             newh = img.shape[0] // 16 * 16
@@ -201,7 +203,6 @@ def get_data(name):
             #imgaug.Flip(vert=True)
         ]
     else:
-        # the original image shape (321x481) in BSDS is not a multiple of 16
         IMAGE_SHAPE = (512, 512)
         shape_aug = [imgaug.CenterCrop(IMAGE_SHAPE)]
     ds = AugmentImageComponents(ds, shape_aug, (0, 1, 2, 3), copy=False)
@@ -253,7 +254,7 @@ def get_config():
             HumanHyperParamSetter('learning_rate')],
         model=Model(),
         steps_per_epoch=steps_per_epoch,
-        max_epoch=100,
+        max_epoch=200,
     )
 
 
@@ -286,7 +287,7 @@ def run(model_path, image_path, output):
             mask = cv2.merge([outputs[0][0], outputs[1][0], outputs[2][0]])
             cv2.imwrite(os.path.join(output,fname+'.png'), mask*255, [cv2.IMWRITE_PNG_COMPRESSION, 0])
     print 'image num: {}'.format(len(imgs))
-    print 'average infer time (ms): %.3f %.3f'%(sum(time_consum), sum(time_consum)/len(time_consum)) 
+    print 'average infer time (ms): %.3f'%(sum(time_consum)/len(time_consum)) 
 
 
 if __name__ == '__main__':
