@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# File: hed.py
-# Author: Yuxin Wu <ppwwyyxxc@gmail.com>
-
-#Total #param=55297603 (210.94 MB assuming all float32)
+# File: unet.py
+# Author: Yahui Liu <yahui.liu@unitn.it>
 
 import cv2
 import tensorflow as tf
@@ -178,7 +176,7 @@ class Model(ModelDesc):
 def get_data(name):
     isTrain = name == 'train'
     ds = dataset.RoadNetImage(name, 
-        '/home/tensorflow/yhl/tensorpack_data/RoadNet/Ottawa/train', shuffle=True)
+        '../../datasets/Ottawa/train', shuffle=True)
     class CropMultiple16(imgaug.ImageAugmentor):
         def _get_augment_params(self, img):
             newh = img.shape[0] // 16 * 16

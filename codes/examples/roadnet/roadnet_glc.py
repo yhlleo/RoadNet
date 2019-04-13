@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# File: hed.py
-# Author: Yuxin Wu <ppwwyyxxc@gmail.com>
+# File: roadnet_glc.py
+# Author: Yahui Liu <yahui.liu@unitn.it>
 
 import cv2
 import tensorflow as tf
@@ -31,7 +31,6 @@ class Model(ModelDesc):
 
         #image = image - tf.constant([104, 116, 122], dtype='float32')
         segment = tf.expand_dims(segment, 3, name='segment4d')
-        #boundary = tf.expand_dims(boundary, 3, name='boundary4d')
         skeleton = tf.expand_dims(skeleton, 3, name='skeleton4d')
 
         def branch(name, l, num, up):
@@ -155,7 +154,7 @@ class Model(ModelDesc):
 def get_data(name):
     isTrain = name == 'train'
     ds = dataset.RoadNetImage2(name, 
-        '/home/tensorflow/yhl/tensorpack_data/Guangliang/dataset', shuffle=True)
+        '../../datasets/Ottawa/train', shuffle=True)
     print ds.size()
     class CropMultiple16(imgaug.ImageAugmentor):
         def _get_augment_params(self, img):
@@ -198,8 +197,7 @@ def get_data(name):
     if isTrain:
         augmentors = [
             imgaug.Brightness(63, clip=False),
-            imgaug.Contrast((0.4, 1.5)),
-        ]
+            imgaug.Contrast((0.4, 1.5))]
         ds = AugmentImageComponent(ds, augmentors, copy=False)
         ds = BatchDataByShape(ds, 1, idx=0)
         ds = PrefetchDataZMQ(ds, 1)
@@ -231,8 +229,7 @@ def get_config():
             ModelSaver(),
             ScheduledHyperParamSetter('learning_rate', 
                 [(20, 5e-4), (40, 1e-4), (60, 5e-5), (80, 1e-5), (100, 1e-6)]),
-            HumanHyperParamSetter('learning_rate')
-        ],
+            HumanHyperParamSetter('learning_rate')],
         model=Model(),
         steps_per_epoch=steps_per_epoch,
         max_epoch=200,

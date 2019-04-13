@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# File: 
+# File: unet.py
+# Author: Yahui Liu <yahui.liu@unitn.it>
 
 import cv2
 import tensorflow as tf
@@ -179,7 +180,7 @@ class Model(ModelDesc):
 def get_data(name):
     isTrain = name == 'train'
     ds = dataset.RoadNetImage(name, 
-        '/home/tensorflow/yhl/tensorpack_data/RoadNet/Ottawa/train', shuffle=True)
+        '../../datasets/Ottawa/train', shuffle=True)
     print ds.size()
     class CropMultiple16(imgaug.ImageAugmentor):
         def _get_augment_params(self, img):
@@ -206,7 +207,6 @@ def get_data(name):
             #imgaug.Flip(vert=True)
         ]
     else:
-        # the original image shape (321x481) in BSDS is not a multiple of 16
         IMAGE_SHAPE = (512, 512)
         shape_aug = [imgaug.CenterCrop(IMAGE_SHAPE)]
     ds = AugmentImageComponents(ds, shape_aug, (0, 1, 2, 3), copy=False)
@@ -223,8 +223,7 @@ def get_data(name):
     if isTrain:
         augmentors = [
             imgaug.Brightness(63, clip=False),
-            imgaug.Contrast((0.4, 1.5)),
-        ]
+            imgaug.Contrast((0.4, 1.5))]
         ds = AugmentImageComponent(ds, augmentors, copy=False)
         ds = BatchDataByShape(ds, 1, idx=0)
         ds = PrefetchDataZMQ(ds, 1)
@@ -256,8 +255,7 @@ def get_config():
             ModelSaver(),
             ScheduledHyperParamSetter('learning_rate', 
                 [(40, 5e-4), (80, 1e-4), (120, 5e-5), (160, 1e-5)]),
-            HumanHyperParamSetter('learning_rate')
-        ],
+            HumanHyperParamSetter('learning_rate')],
         model=Model(),
         steps_per_epoch=steps_per_epoch,
         max_epoch=200,

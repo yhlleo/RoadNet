@@ -10,7 +10,6 @@ sys.path.insert(0, '../../tensorpack')
 
 from tensorpack import *
 from roadnet_glc import Model
-#from raw.segnet import Model
 from imcrop import imageCrop
 from imstitch import stitch
 

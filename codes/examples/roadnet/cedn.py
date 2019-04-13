@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# File: hed.py
-# Author: Yuxin Wu <ppwwyyxxc@gmail.com>
-
-# param=124867971 (476.33 MB assuming all float32)
-#
+# File: cedn.py
+# Author: Yahui Liu <yahui.liu@unitn.it>
 
 import cv2
 import tensorflow as tf
@@ -14,6 +11,7 @@ from six.moves import zip
 import os, glob
 import sys
 import random
+import time
 
 sys.path.insert(0, '../../tensorpack')
 
@@ -31,12 +29,8 @@ class Model(ModelDesc):
                 InputDesc(tf.int32, [None, SHAPE, SHAPE], 'skeleton')]
 
     def _build_graph(self, inputs):
-
         image, segment, boundary, skeleton = inputs
-        #print image.get_shape().as_list()
 
-        #if get_current_tower_context().is_training:
-        #    image = noisy(image)
         #image = image - tf.constant([104, 116, 122], dtype='float32')
         segment = tf.expand_dims(segment, 3, name='segment4d')
         boundary = tf.expand_dims(boundary, 3, name='boundary4d')
@@ -203,7 +197,7 @@ class Model(ModelDesc):
 def get_data(name):
     isTrain = name == 'train'
     ds = dataset.RoadNetImage(name, 
-        '/home/tensorflow/yhl/tensorpack_data/RoadNet/Ottawa/train-extra', shuffle=True)
+        '../../datasets/Ottawa/train', shuffle=True)
     print ds.size()
     class CropMultiple16(imgaug.ImageAugmentor):
         def _get_augment_params(self, img):
@@ -247,8 +241,7 @@ def get_data(name):
     if isTrain:
         augmentors = [
             imgaug.Brightness(63, clip=False),
-            imgaug.Contrast((0.4, 1.5)),
-        ]
+            imgaug.Contrast((0.4, 1.5))]
         ds = AugmentImageComponent(ds, augmentors, copy=False)
         ds = BatchDataByShape(ds, 1, idx=0)
         ds = PrefetchDataZMQ(ds, 1)
@@ -280,11 +273,7 @@ def get_config():
             ModelSaver(),
             ScheduledHyperParamSetter('learning_rate', 
                 [(40, 5e-4), (80, 1e-4), (120, 5e-5), (160, 1e-5)]),
-            HumanHyperParamSetter('learning_rate')
-        ],
-        #    InferenceRunner(dataset_val,
-        #                    BinaryClassificationStats('prediction', 'edgemap4d'))
-        #],
+            HumanHyperParamSetter('learning_rate')],
         model=Model(),
         steps_per_epoch=steps_per_epoch,
         max_epoch=200,
@@ -296,13 +285,10 @@ def run(model_path, image_path, output):
         model=Model(),
         session_init=get_model_loader(model_path),
         input_names=['image'],
-        #output_names=['output' + str(k) for k in range(1, 7)])
         output_names=['segment-output', 'boundary-output', 'skeleton-output'])
     predictor = OfflinePredictor(pred_config)
 
     imgs = glob.glob(os.path.join(image_path, '*.png'))
-    #mask = np.zeros((512, 512, 3), dtype=np.uint8)
-    import time
     time_consum = []
     for ls in imgs:
         im = cv2.imread(ls)
@@ -318,17 +304,8 @@ def run(model_path, image_path, output):
                 cv2.imwrite("out{}.png".format(
                     '-fused' if k == 5 else str(k + 1)), pred * 255)
         else:
-            #segment = outputs[0][0,:,:,1]
             fname = ls.split('/')[-1]
             fname = fname.split('.')[0]
-            '''
-            segment = outputs[0][0]
-            cv2.imwrite(os.path.join(output,fname+'-segment.png'), segment*255)
-            boundary = outputs[1][0]
-            cv2.imwrite(os.path.join(output,fname+'-boundary.png'), boundary*255)
-            skeleton = outputs[2][0]
-            cv2.imwrite(os.path.join(output,fname+'-skeleton.png'), skeleton*255) 
-            '''
             mask = cv2.merge([outputs[0][0], outputs[1][0], outputs[2][0]])
             cv2.imwrite(os.path.join(output,fname+'.png'), mask*255, [cv2.IMWRITE_PNG_COMPRESSION, 0])
     print 'image num: {}'.format(len(imgs))

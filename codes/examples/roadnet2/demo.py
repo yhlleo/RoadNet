@@ -10,13 +10,11 @@ sys.path.insert(0, '../../tensorpack')
 
 from tensorpack import *
 from unet import Model
-#from raw.segnet import Model
 from imcrop import imageCrop
 from imstitch import stitch
 
 def im_eval(im_file, model_path, save_path):
   assert os.path.isfile(im_file), im_file
-  #assert os.path.isdir(save_path), save_path
   if not os.path.exists(save_path):
     os.mkdir(save_path)
 
@@ -65,7 +63,6 @@ def im_eval(im_file, model_path, save_path):
 	
     fname = ls.split('/')[-1]
     fname = fname.split('.')[0]
-    #print len(outputs), outputs[0][0].shape
     mask = cv2.merge([outputs[0][0][:,:,1], outputs[1][0][:,:,1], outputs[2][0][:,:,1]])
     cv2.imwrite(os.path.join(output_path,fname+'.png'), mask*255, [cv2.IMWRITE_PNG_COMPRESSION, 0])
 
