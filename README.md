@@ -2,6 +2,11 @@
 
 ## Code
 
+
+ - Python 2.7. Python 2.7 is supported until it retires in 2020.
+ - Python bindings for OpenCV. (Optional, but required by a lot of features)
+ - TensorFlow ≥ 1.0,
+
 [More Details >>>](./codes/README.md)
 
 ## Dataset
