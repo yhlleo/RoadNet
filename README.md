@@ -1,6 +1,6 @@
 # RoadNet
 
-## Code
+## 1.Code
 
 
  - Python 2.7. Python 2.7 is supported until it retires in 2020.
@@ -9,7 +9,7 @@
 
 [More Details >>>](./codes/README.md)
 
-## Dataset
+## 2.Dataset
 
 Benchmakr Dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2018.
 
@@ -19,14 +19,14 @@ Benchmakr Dataset for the paper: [RoadNet: Learning to Comprehensively Analyze R
 
 We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel (zoom level 19).
 
-### 1.Download
+### 2.1.Download
 
 Download link: 
 
  - [BaiduYun](https://pan.baidu.com/s/1l9RZvyYfLgTOx_k4LQRyhQ)（Password: h2zt）
  - [GoogleDrive](https://drive.google.com/open?id=1GDHy7uwgOswuCDC49OamlNkAxjaITPBI)
 
-### 2.Training and Testing
+### 2.2.Training and Testing
 
 Training files:
 
@@ -36,7 +36,7 @@ Testing files:
 
  - 1,16,17,18,19,20
 
-### 3.Annotations
+### 2.3.Annotations
 
 We take an example with the folder "1": 
 
@@ -49,7 +49,7 @@ We take an example with the folder "1":
 |`extra.png`|roughly mark the heterogeneous regions with a single pixel width brush (red)|
 |`extra-Ottawa-1.tif`| the `Ottawa-1.tif` is overlaid with the `extra.png`|
 
-### 4.Citation
+### 3.Citation
 
 Please cite this paper if you use this dataset:
 
