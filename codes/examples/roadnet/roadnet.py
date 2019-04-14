@@ -173,10 +173,9 @@ class Model(ModelDesc):
             opt, [gradproc.ScaleGradient(
                 [('.*-fuse.*', 0.1), ('.*conv5_.*', 5)])])
 
-def get_data(name):
+def get_data(data_dir, name, load_size=512):
     isTrain = name == 'train'
-    ds = dataset.RoadNetImage(name, 
-        '../../datasets/Ottawa/train', shuffle=True)
+    ds = dataset.RoadNetImage(name, data_dir, shuffle=True)
     
     class CropMultiple16(imgaug.ImageAugmentor):
         def _get_augment_params(self, img):
@@ -203,7 +202,7 @@ def get_data(name):
             #imgaug.Flip(vert=True)
         ]
     else:
-        IMAGE_SHAPE = (512, 512)
+        IMAGE_SHAPE = (load_size, load_size)
         shape_aug = [imgaug.CenterCrop(IMAGE_SHAPE)]
     ds = AugmentImageComponents(ds, shape_aug, (0, 1, 2, 3), copy=False)
 
@@ -227,8 +226,8 @@ def get_data(name):
         ds = BatchData(ds, 1)
     return ds
 
-def view_data():
-    ds = RepeatedData(get_data('train'), -1)
+def view_data(opt):
+    ds = RepeatedData(get_data(opt.data_dir, 'train'), -1)
     ds.reset_state()
     for ims, edgemaps in ds.get_data():
         for im, edgemap in zip(ims, edgemaps):
@@ -239,9 +238,9 @@ def view_data():
             cv2.waitKey(1000)
 
 
-def get_config():
+def get_config(opt):
     logger.auto_set_dir()
-    dataset_train = get_data('train')
+    dataset_train = get_data(opt.data_dir, 'train')
     steps_per_epoch = 400#dataset_train.size()
     #dataset_val = get_data('val')
 
@@ -297,16 +296,18 @@ if __name__ == '__main__':
     parser.add_argument('--view', help='view dataset', action='store_true')
     parser.add_argument('--run', help='run model on images')
     parser.add_argument('--output', help='fused output filename. default to out-fused.png')
+    parser.add_argument('--data_dir', type=str, default='../../datasets/Ottawa/train', help='training data folder')
+    parser.add_argument('--load_size', type=int, default=512, help='loading image size')
     args = parser.parse_args()
     if args.gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
         
     if args.view:
-        view_data()
+        view_data(args)
     elif args.run:
         run(args.load, args.run, args.output)
     else:
-        config = get_config()
+        config = get_config(args)
         if args.load:
             config.session_init = get_model_loader(args.load)
         if args.gpu:
