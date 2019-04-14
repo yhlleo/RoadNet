@@ -33,5 +33,3 @@ python ./RoadNet/roadnet.py \
   --run /path/to/images \
   --output /path/to/save_folder
 ```
-
- [More Details >>>](./examples/README.md)
