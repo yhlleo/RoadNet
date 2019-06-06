@@ -6,7 +6,7 @@ import numpy as np
 import os, glob
 import time
 
-sys.path.insert(0, '../../tensorpack')
+sys.path.insert(0, '../../../tensorpack')
 
 from tensorpack import *
 from roadnet_glc import Model

@@ -13,7 +13,7 @@ import sys
 import random
 import time
 
-sys.path.insert(0, '../../tensorpack')
+sys.path.insert(0, '../../../tensorpack')
 
 from tensorpack import *
 from tensorpack.tfutils.symbolic_functions import *
