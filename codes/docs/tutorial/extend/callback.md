@@ -1,4 +1,0 @@
-
-## Write a callback
-
-TODO
