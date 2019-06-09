@@ -61,4 +61,4 @@ Please cite this paper if you use this dataset:
 }
 ```
 
-You are also welcomed to contact me: yahui.cvrs@gmail.com
+If you have any questions, please contact me: yahui.cvrs AT gmail.com without hesitation.
