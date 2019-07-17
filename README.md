@@ -6,7 +6,7 @@ The Pytorch implementation is coming soon on [[yhlleo/DeepSegmentor]](https://gi
 
 ## 2.Dataset
 
-Benchmakr Dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2018.
+A multi-task benchmakr dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2018.
 
 ![dataset](./roadnet-dataset.jpg)
 
