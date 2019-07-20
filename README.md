@@ -2,7 +2,7 @@
 
 ## 1.Code
 
-The Pytorch implementation is coming soon on [[yhlleo/DeepSegmentor]](https://github.com/yhlleo/DeepSegmentor)!
+The Pytorch implementation is released at [[yhlleo/DeepSegmentor]](https://github.com/yhlleo/DeepSegmentor)!
 
 ## 2.Dataset
 
