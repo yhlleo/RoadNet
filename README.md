@@ -14,7 +14,7 @@ A multi-task benchmakr dataset for the paper: [RoadNet: Learning to Comprehensiv
 
 We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel (zoom level 19). 
 
-**Please note that we do not own the copyrights to these images. Their use is RESTRICTED to non-commercial research and educational purposes.**
+**Please note that we do not own the copyrights to these original satellite images. Their use is RESTRICTED to non-commercial research and educational purposes.**
 
 ### 2.1.Download
 
