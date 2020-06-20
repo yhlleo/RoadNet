@@ -1,12 +1,9 @@
 # RoadNet
 
-## 1.Code
+A multi-task benchmark dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS, IF: 5.63), 2019. [[paper]](./RoadNet-TGRS2019-Liu.pdf)|[[code]](https://github.com/yhlleo/DeepSegmentor)
 
-The Pytorch implementation is released at [[yhlleo/DeepSegmentor]](https://github.com/yhlleo/DeepSegmentor)!
 
-## 2.Dataset
-
-A multi-task benchmark dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS, IF: 5.63), 2019.
+## 1.Dataset
 
 ![dataset](./roadnet-dataset.jpg)
 
