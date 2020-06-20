@@ -5,7 +5,7 @@ A multi-task benchmark dataset for the paper: [RoadNet: Learning to Comprehensiv
 
 ## 1.Dataset
 
-![dataset](./roadnet-dataset.jpg)
+![dataset](./figures/roadnet-dataset.jpg)
 
 ---------
 
@@ -45,9 +45,9 @@ We take an example with the folder "1":
 
 ## 2.Visualization of Results
 
-![](./demo.jpg)
+![](./figures/demo.jpg)
 
-![](./demo2.jpg)
+![](./figures/demo2.jpg)
 
 ## 3.Reference
 
