@@ -13,14 +13,14 @@ We collected several typical urban areas of Ottawa, Canada from [Google Earth](h
 
 **Please note that we do not own the copyrights to these original satellite images. Their use is RESTRICTED to non-commercial research and educational purposes.**
 
-### 2.1.Download
+### 1.1.Download
 
 Download link: 
 
  - [BaiduYun](https://pan.baidu.com/s/1l9RZvyYfLgTOx_k4LQRyhQ)（Password: h2zt）
  - [GoogleDrive](https://drive.google.com/open?id=1GDHy7uwgOswuCDC49OamlNkAxjaITPBI)
 
-### 2.2.Training and Testing
+### 1.2.Training and Testing
 
 Training files:
 
@@ -30,7 +30,7 @@ Testing files:
 
  - 1,16,17,18,19,20
 
-### 2.3.Annotations
+### 1.3.Annotations
 
 We take an example with the folder "1": 
 
@@ -43,13 +43,13 @@ We take an example with the folder "1":
 |`extra.png`|roughly mark the heterogeneous regions with a single pixel width brush (red)|
 |`extra-Ottawa-1.tif`| the `Ottawa-1.tif` is overlaid with the `extra.png`|
 
-## 3.Visualization of Results
+## 2.Visualization of Results
 
 ![](./demo.jpg)
 
 ![](./demo2.jpg)
 
-## 4.Reference
+## 3.Reference
 
 Please cite this paper if you use this dataset:
 
