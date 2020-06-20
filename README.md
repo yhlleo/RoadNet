@@ -2,17 +2,19 @@
 
 ## 1.Code
 
-The Pytorch implementation is coming soon on [[yhlleo/DeepSegmentor]](https://github.com/yhlleo/DeepSegmentor)!
+The Pytorch implementation is released at [[yhlleo/DeepSegmentor]](https://github.com/yhlleo/DeepSegmentor)!
 
 ## 2.Dataset
 
-A multi-task benchmakr dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2018.
+A multi-task benchmark dataset for the paper: [RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images](https://ieeexplore.ieee.org/document/8506600), IEEE Transactions on Geoscience and Remote Sensing (TGRS, IF: 5.63), 2019.
 
 ![dataset](./roadnet-dataset.jpg)
 
 ---------
 
-We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel (zoom level 19).
+We collected several typical urban areas of Ottawa, Canada from [Google Earth](http://earth.google.com). The images are with 0.21m spatial resolution per pixel (zoom level 19). 
+
+**Please note that we do not own the copyrights to these original satellite images. Their use is RESTRICTED to non-commercial research and educational purposes.**
 
 ### 2.1.Download
 
@@ -55,14 +57,14 @@ We take an example with the folder "1":
 Please cite this paper if you use this dataset:
 
 ```
-@article{liu2018roadnet,
+@article{liu2019roadnet,
   title={RoadNet: Learning to Comprehensively Analyze Road Networks in Complex Urban Scenes from High-Resolution Remotely Sensed Images},
   author={Liu, Yahui and Yao, Jian and Lu, Xiaohu and Xia, Menghan and Wang, Xingbo and Liu, Yuan},
   journal={IEEE Transactions on Geoscience and Remote Sensing},
   volume={57},
   number={4},
   pages={2043--2056},
-  year={2018},
+  year={2019},
   doi={10.1109/TGRS.2018.2870871}
 }
 ```
